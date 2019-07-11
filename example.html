@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+	</head>
+  <body>
+
+    <h3>Chart using date requested from PDH .stat</h3>
+    <h5>Uses the default parse method</h5>
+
+    <div id="dotstat-sdg451"></div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="statchart.js"></script>
+    <script src="pretty-json.js"></script>
+    <script>
+  
+    $(function() {
+  
+      new DotStatChart(
+        'dotstat-sdg451',
+        'Education Level (SDG 4.5.1)',
+        'https://stats.pacificdata.org/data-explorer/#/vis?locale=en&endpointId=disseminate&agencyId=SPC&code=DF_SDG&version=1.0&activeFilterId=SERIES&viewerId=BarChart&data=.SE_ACS_ELECT..........&startPeriod=2007&endPeriod=2018',
+        {
+          subtitle: '',
+          chart : {
+            type: 'column'
+          },
+          yAxis: {
+            min: 0,
+            max: 120,
+            title: {
+              text: 'Index'
+            }
+          },
+          tooltip: {
+            headerFormat: '',
+            pointFormat: '<em>{point.label}</em><br />Education Level ({point.year}): <b>{point.y}</b>'
+          },
+          showTable: true,
+          debug: true
+        }).go(
+        'https://stats.pacificdata.org/data-nsi/Rest/data/SPC,DF_SDG,1.0/.SE_TOT_GPI......ISCED11_10..../?startPeriod=2007&endPeriod=2018&dimensionAtObservation=AllDimensions',
+        {
+          "name": "dim[2].id",
+          "label": "dim[2].name",
+          "year": "dim[12].name",
+          "y": "val[0]"
+        }
+      );
+    
+    }); // end jquery onload
+  
+		</script>
+	</body>
+</html>
