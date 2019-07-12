@@ -1,5 +1,7 @@
 ## Learning by example
 
+This step by step guide will help you code [this example](https://pacificcommunity.github.io/dotstatcharts/example.html).
+
 ### Browse for data in .stat
 Use .stat data explorer, browse and filter until you get the expected results
 
@@ -28,7 +30,8 @@ The QUERY_URI parameter is the query you previously got from .stat
 
 #### Reading the JSON object returned
 The JSON returned is shown under the JSON tab.
-The data is defined in the `dataSets[0].observations` onject. A row looks like so :
+The data is defined in the `dataSets[0].observations` JS object.  
+A data row looks like so :
 ```
   0:0:0:0:0:0:0:0:0:0:0:0:0: {
     0: 100
@@ -40,7 +43,7 @@ The data is defined in the `dataSets[0].observations` onject. A row looks like s
   }
 ```
 
-The key, containing a colon separated list of numbers, is related with the data defined in the structure.dimensions.observation object.
+The key, defined by a colon separated list of numbers, is related to the data defined in the `structure.dimensions.observation` object.
 
 For instance, the first 0 in the string corresponds to the first dimension "FREQ" :
 ```js
@@ -58,7 +61,7 @@ For instance, the first 0 in the string corresponds to the first dimension "FREQ
   }
 ```
 
-Looking at the dimensions, we now know what each number means (starting from index = 0) :
+Looking at the dimensions, we now know what each number means (starting from index = 0):
 0) Frequency
 1) SDG Indicator or Series
 2) Reference Area
@@ -83,18 +86,18 @@ We want to display the 2 letters country code as the x-axis legend.
 2) The 2 letter code is in the `id` property, which we access through `dim[2].id`
 3) We will assign this value to the `name` property, as required by highcharts
 
-So our first parser parameter is : `"name": "dim[2].id"`
+So our first parser parameter is `"name": "dim[2].id"`
 
 We then want :
 - the full name of the country to be in variable `label`
 - the year the data has been collected in variable `year`
 
-Now the value is not in the dimension array, but in the values array.  
+The value itself is not in the dimension array, but in the values array.  
 And in fact, it is the first indexed value, which we access using the `val[0]` parameter.  
 Highcharts requires the y-axis value to be assigned to property `y`.  
-Our y-axis value is defined as : `"y": "val[0]"`
+Our y-axis value is then defined as `"y": "val[0]"`
 
-Our full parser parameters then becomes :
+Our full parser parameters:
 ```json
   {
     "name": "dim[2].id",
@@ -123,10 +126,10 @@ new DotStatChart(
 );
 ```
 
-Launch again and check the chart
+Reload and check the chart
 
 #### Refine highcharts options
-Go to highcharts.com and check out the [Highcharts API](https://api.highcharts.com/highcharts/) to learn more about its options.
+Go to highcharts.com and check out the [Highcharts API](https://api.highcharts.com/highcharts/) to learn more about its options.  
 A good place to start is also by looking at [Highcharts demos](https://www.highcharts.com/demo).
 
 Don't forget to turn Debug mode OFF
