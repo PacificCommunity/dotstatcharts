@@ -81,7 +81,10 @@
             headerFormat: '',
             pointFormat: '<em>{point.label}</em><br />Education Level ({point.year}): <b>{point.y}</b>'
           },
-          showTable: true
+          showTable: true,
+          series: [
+            { name: 'Level' }
+          ]
         }
       ).go(
         conf_query,
