@@ -8,6 +8,9 @@ The statchart.js processes data from .stat and generates charts
 
 [Test it on codepen](https://codepen.io/stanozr/pen/LKaavR)
 
+FOR DEMO AND TRAINING PURPOSE ONLY
+Do not use in production (poor performance, no caching)
+
 ## Requirements
 
 #### CSS
