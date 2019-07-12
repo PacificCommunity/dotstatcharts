@@ -87,6 +87,10 @@ function DotStatChart(id, title, link, opts) {
         }
       }
     },
+    yAxis: {
+      endOnTick: false,
+      maxPadding: 0
+    },
     legend: {
       enabled: false
     },
