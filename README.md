@@ -27,9 +27,7 @@ This version does not support time series, only simple data
 
 ## How to use
 
-Going step by step, using the [example from this repository](https://pacificcommunity.github.io/dotstatcharts/example.html).
-
-Read from the [Manual - Learning by example](docs/LEARNING.md).
+Read from the [Learning by example guide](docs/LEARNING.md) to learn how to code the [example from this repository](https://pacificcommunity.github.io/dotstatcharts/example.html).
 
 ## Test it on codepen
 https://codepen.io/stanozr/pen/LKaavR
