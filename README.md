@@ -27,7 +27,7 @@ This version does not support time series, only simple data
 
 ## How to use
 
-Going step by step, using the example used in example.html file from this repository.
+Going step by step, using the [example from this repository](https://pacificcommunity.github.io/dotstatcharts/example.html).
 
 ### Browse for data in .stat
 Use .stat data explorer, browse and filter until you get the expected results
