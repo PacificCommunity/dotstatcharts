@@ -12,7 +12,7 @@ h3:first-child {
 }
 h5 {
   width: 84%;
-  margin: 0 auto 1rem;
+  margin: 1rem auto .25rem;
   padding: .5rem;
   background-color: #9cf;
   color: #369;
@@ -20,7 +20,7 @@ h5 {
   font-weight: normal;
 }
 .sdd-chart-panel {
-  padding: 2rem;
+  padding: 1rem;
   width: 80%;
   margin: 0 auto;
 }
@@ -41,7 +41,10 @@ h5 {
   max-width: 600px;
   height: 300px;
   overflow: visible !important;
-  margin: 0 auto;
+  margin: 2rem auto;
+}
+.sdd-chart-panel .highcharts-chart {
+  margin: 0 auto 2rem;
 }
 
 .highcharts-container {

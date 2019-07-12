@@ -10,8 +10,14 @@
   <body>
 
     <h3>Chart using date requested from PDH .stat</h3>
-    <h5>Uses the default parse method</h5>
-
+    
+    <h5>First call: no parser</h5>
+    <div id="dotstat-first"></div>
+    
+    <h5>Second call: testing parser parameters</h5>
+    <div id="dotstat-second"></div>
+    
+    <h5>Full setup</h5>
     <div id="dotstat-sdg451"></div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -25,19 +31,48 @@
     <script>
   
     $(function() {
+      
+      var conf_title = 'Education Level (SDG 4.5.1)';
+      
+      var conf_link = 'https://stats.pacificdata.org/data-explorer/#/vis?locale=en&endpointId=disseminate&agencyId=SPC&code=DF_SDG&version=1.0&activeFilterId=SERIES&viewerId=BarChart&data=.SE_ACS_ELECT..........&startPeriod=2007&endPeriod=2018';
+      
+      var conf_query = 'https://stats.pacificdata.org/data-nsi/Rest/data/SPC,DF_SDG,1.0/.SE_TOT_GPI......ISCED11_10..../?startPeriod=2007&endPeriod=2018&dimensionAtObservation=AllDimensions';
+      
+      new DotStatChart(
+        'dotstat-first',
+        conf_title,
+        conf_link,
+        { debug:true }
+      ).go(
+        conf_query,
+        { }
+      );
+      
+       new DotStatChart(
+        'dotstat-second',
+        conf_title,
+        conf_link,
+        { debug: false }
+      ).go(
+        conf_query,
+        {
+          "name": "dim[2].id",
+          "label": "dim[2].name",
+          "year": "dim[12].name",
+          "y": "val[0]"
+        }
+      );
   
       new DotStatChart(
         'dotstat-sdg451',
-        'Education Level (SDG 4.5.1)',
-        'https://stats.pacificdata.org/data-explorer/#/vis?locale=en&endpointId=disseminate&agencyId=SPC&code=DF_SDG&version=1.0&activeFilterId=SERIES&viewerId=BarChart&data=.SE_ACS_ELECT..........&startPeriod=2007&endPeriod=2018',
+        conf_title,
+        conf_link,
         {
           subtitle: '',
           chart : {
             type: 'column'
           },
           yAxis: {
-            min: 0,
-            max: 120,
             title: {
               text: 'Index'
             }
@@ -46,10 +81,10 @@
             headerFormat: '',
             pointFormat: '<em>{point.label}</em><br />Education Level ({point.year}): <b>{point.y}</b>'
           },
-          showTable: true,
-          debug: true
-        }).go(
-        'https://stats.pacificdata.org/data-nsi/Rest/data/SPC,DF_SDG,1.0/.SE_TOT_GPI......ISCED11_10..../?startPeriod=2007&endPeriod=2018&dimensionAtObservation=AllDimensions',
+          showTable: true
+        }
+      ).go(
+        conf_query,
         {
           "name": "dim[2].id",
           "label": "dim[2].name",
