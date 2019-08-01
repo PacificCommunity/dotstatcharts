@@ -62,12 +62,11 @@ For instance, the first 0 in the string corresponds to the first dimension "FREQ
 ```
 
 Looking at the dimensions, we now know what each number means (starting from index = 0):
-0) Frequency
-1) SDG Indicator or Series
-2) Reference Area
-3) Sex Breakdown
-
-and so on...
+* [0] Frequency
+* [1] SDG Indicator or Series
+* [2] Reference Area
+* [3] Sex Breakdown
+* and so on...
 
 What we want here is the name of the country, the year, and the index.
 
